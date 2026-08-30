@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HUT Ke-81 RI | SMKN 1 Adiwerna</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f7f7f7;
+    color:#222;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:15px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#ff3030;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#ff3333;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:100px 20px 50px;
+    background:
+        linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
+        linear-gradient(135deg,#d60000 0%,#ffffff 50%,#d60000 100%);
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:before,
+.hero:after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+}
+
+.hero:before{
+    width:400px;
+    height:400px;
+    top:-100px;
+    left:-100px;
+}
+
+.hero:after{
+    width:500px;
+    height:500px;
+    bottom:-200px;
+    right:-150px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+}
+
+.merah{
+    color:#ff3030;
+}
+
+.hero h1{
+    font-size:clamp(45px,9vw,90px);
+    font-weight:900;
+    line-height:1;
+    margin-bottom:20px;
+    text-shadow:0 5px 20px rgba(0,0,0,.4);
+}
+
+.hero h2{
+    font-size:clamp(20px,4vw,35px);
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    opacity:.9;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:30px;
+    background:#e50914;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 10px 25px rgba(229,9,20,.35);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    background:#ff3030;
+}
+
+/* SECTION */
+section{
+    padding:90px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+/* ABOUT */
+.about{
+    background:white;
+}
+
+.about-box{
+    max-width:1000px;
+    margin:auto;
+    padding:40px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#fff,#f3f3f3);
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.about-box p{
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* LOMBA */
+.lomba{
+    background:#111;
+    color:white;
+}
+
+.lomba .section-title p{
+    color:#bbb;
+}
+
+.cards{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    padding:30px 25px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#202020,#111);
+    border:1px solid #333;
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:#e50914;
+    filter:blur(60px);
+    opacity:.25;
+    right:-30px;
+    top:-30px;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#e50914;
+    box-shadow:0 15px 35px rgba(229,9,20,.2);
+}
+
+.icon{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#bbb;
+    line-height:1.6;
+}
+
+/* SEMANGAT */
+.semangat{
+    text-align:center;
+    background:
+        linear-gradient(rgba(220,0,0,.9),rgba(170,0,0,.9));
+    color:white;
+}
+
+.semangat h2{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.semangat p{
+    font-size:19px;
+    max-width:700px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* INFO */
+.info{
+    background:white;
+}
+
+.info-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+}
+
+.info-item{
+    text-align:center;
+    padding:30px;
+    border-radius:20px;
+    background:#f7f7f7;
+}
+
+.info-item .big{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.info-item h3{
+    margin-bottom:8px;
+}
+
+/* FOOTER */
+footer{
+    background:#090909;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer h3{
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#999;
+}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+
+    nav{
+        padding:14px 5%;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        min-height:90vh;
+    }
+
+    section{
+        padding:70px 5%;
+    }
+
+    .about-box{
+        padding:25px;
+    }
+
+    .section-title h2{
+        font-size:30px;
+    }
+
+    .semangat h2{
+        font-size:32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        <span>81</span> HUT RI
+    </div>
+
+    <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#lomba">Lomba</a></li>
+        <li><a href="#info">Info</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="beranda">
+
+    <div class="hero-content">
+
+        <h2>🇮🇩 DIRGAHAYU REPUBLIK INDONESIA 🇮🇩</h2>
+
+        <h1>
+            HUT KE-<span class="merah">81</span>
+        </h1>
+
+        <h2>SMKN 1 ADIWERNA</h2>
+
+        <p>
+            Rayakan kemerdekaan dengan semangat,
+            kebersamaan, kreativitas, dan sportivitas!
+        </p>
+
+        <a href="#lomba" class="btn">
+            LIHAT LOMBA ↓
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- TENTANG -->
+<section class="about" id="tentang">
+
+    <div class="section-title">
+        <h2>Tentang Kegiatan</h2>
+        <p>Semangat kemerdekaan di SMKN 1 Adiwerna</p>
+    </div>
+
+    <div class="about-box">
+
+        <p>
+            Dalam rangka memperingati <b>Hari Ulang Tahun ke-81
+            Republik Indonesia</b>, SMKN 1 Adiwerna turut memeriahkan
+            hari kemerdekaan dengan berbagai kegiatan dan perlombaan
+            yang seru, kreatif, serta penuh kebersamaan.
+        </p>
+
+        <br>
+
+        <p>
+            Kegiatan ini menjadi kesempatan bagi seluruh warga sekolah
+            untuk mempererat persaudaraan, meningkatkan kekompakan,
+            menjunjung sportivitas, dan tentunya menikmati semarak
+            kemerdekaan Indonesia.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LOMBA -->
+<section class="lomba" id="lomba">
+
+    <div class="section-title">
+        <h2>🏆 Daftar Perlombaan</h2>
+        <p>Siapkan tim terbaik kalian!</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🏃</div>
+            <h3>Flyball</h3>
+            <p>
+                Uji kecepatan, ketangkasan, dan kekompakan
+                dalam perlombaan Flyball.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎤</div>
+            <h3>Nasyid</h3>
+            <p>
+                Tampilkan kreativitas dan kekompakan melalui
+                lantunan nasyid yang menarik.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧹</div>
+            <h3>Kebersihan</h3>
+            <p>
+                Buktikan kelas kalian paling kompak dalam
+                menjaga kebersihan dan kerapian lingkungan.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🥄</div>
+            <h3>Estafet Tepung</h3>
+            <p>
+                Tantangan seru yang membutuhkan kerja sama,
+                ketelitian, dan kekompakan tim.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🐘</div>
+            <h3>Kaki Gajah</h3>
+            <p>
+                Perlombaan penuh keseruan yang menguji
+                koordinasi dan kerja sama antaranggota tim.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SEMANGAT -->
+<section class="semangat">
+
+    <h2>🇮🇩 MERDEKA! 🇮🇩</h2>
+
+    <p>
+        Bukan cuma soal menang atau kalah.
+        Yang paling penting adalah kebersamaan,
+        sportivitas, dan semangat untuk memeriahkan
+        HUT ke-81 Republik Indonesia!
+    </p>
+
+</section>
+
+
+<!-- INFO -->
+<section class="info" id="info">
+
+    <div class="section-title">
+        <h2>📌 Informasi</h2>
+        <p>HUT ke-81 Republik Indonesia</p>
+    </div>
+
+    <div class="info-grid">
+
+        <div class="info-item">
+            <div class="big">🇮🇩</div>
+            <h3>HUT RI</h3>
+            <p>Ke-81 Republik Indonesia</p>
+        </div>
+
+        <div class="info-item">
+            <div class="big">🏫</div>
+            <h3>Lokasi</h3>
+            <p>SMKN 1 Adiwerna</p>
+        </div>
+
+        <div class="info-item">
+            <div class="big">🏆</div>
+            <h3>Perlombaan</h3>
+            <p>5 lomba seru dan menarik</p>
+        </div>
+
+        <div class="info-item">
+            <div class="big">🤝</div>
+            <h3>Semangat</h3>
+            <p>Kompak, sportif, dan meriah!</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h3>HUT KE-81 REPUBLIK INDONESIA 🇮🇩</h3>
+
+    <p>
+        SMKN 1 Adiwerna
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 • Semangat Kemerdekaan Indonesia
+    </p>
+
+</footer>
+
+</body>
+</html>
